@@ -9,114 +9,216 @@ session_start();
     <title>Helping Paws - NGO for Injured Animals</title>
     <style>
         /* Existing styles... */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: lightgoldenrodyellow;
-        }
-        header {
-            background-color: #6c757d;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            background-color: lightgreen;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #495057;
-            padding: 10px;
-            background-color: lightseagreen;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 10px 20px;
-        }
-        nav a:hover {
-            background-color: #343a40;
-            border-radius: 5px;
-        }
-        .hero {
-            text-align: center;
-            padding: 50px;
-            background: url('https://static.vecteezy.com/system/resources/thumbnails/049/093/147/small_2x/small-dog-in-a-bath-staring-up-against-a-colorful-background-free-photo.jpeg') no-repeat center center/cover;
-            color: white;
-        }
-        section {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .services, .gallery, .donation-feedback {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .services div, .gallery img, .donation-feedback div {
-            flex: 1 1 calc(33% - 20px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 5px;
-            padding: 15px;
-            text-align: center;
-        }
-        .gallery img {
-        display: flex;
-        justify-content: center;
-        gap: 15px; /* space between images */
-        flex-wrap: nowrap; /* keeps them in one line */
-        overflow-x: auto;  /* scroll if screen too small */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: lightgoldenrodyellow;
+}
+header {
+    background-color: lightgreen;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: lightseagreen;
+    padding: 10px;
+    gap: 10px;
+}
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
     }
 
-    .gallery img {
-        height: 300px;
-        width: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        transition: transform 0.3s;
+    nav a {
+        width: 90%;
+        text-align: center;
+        font-size: 18px;
     }
+}
 
-    .gallery img:hover {
-        transform: scale(1.05);
-    }
-       .donation-feedback img {
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #343a40;
+}
+.hero {
+    text-align: center;
+    padding: 100px;
+    background: url('images/Hero.png') no-repeat center center/cover;
+    color: white;
+}
+
+section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+.services,
+.gallery,
+.donation-feedback {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.services div,
+.gallery img,
+.donation-feedback div {
+    flex: 1 1 calc(33% - 20px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+}
+.gallery {
+    gap: 15px;
+}
+.gallery img {
+    height: 300px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+.gallery img:hover {
+    transform: scale(1.05);
+}
+.services div:hover {
+    transform: scale(1.05);
+}
+.donation-feedback img {
     width: 50%;
     height: auto;
-    max-height: auto;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        form input, form textarea, form button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        form button {
-            background-color: #6c757d;
-            color: white;
-            cursor: pointer;
-        }
-        form button:hover {
-            background-color: #5a6268;
-        }
-        footer {
-            background-color: #6c757d;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 20px;
-        }
-    </style>
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+form input,
+form textarea,
+form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+form button {
+    background-color: #6c757d;
+    color: white;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #5a6268;
+}
+footer {
+    background-color: #6c757d;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ✅ Mobile Responsive Fixes */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .services,
+    .donation-feedback,
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services div,
+    .donation-feedback div {
+        flex: 1 1 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .gallery img {
+        width: 90%;
+        height: auto;
+        max-width: 200px;
+        margin-bottom: 10px;
+    }
+
+    form {
+        width: 90%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    form input,
+    form textarea,
+    form button {
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin-top: 20%;
+    }
+}
+</style>
+
 </head>
 <body>
     <header>
@@ -163,8 +265,13 @@ session_start();
     <section id="gallery">
         <h2>Gallery</h2>
         <div class="gallery">
-            <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2017/06/Street_Animal_Rescue_Project.jpg" alt="Cute Dog">
-            <img src="https://strayanimalfoundationindia.org/wp-content/uploads/2023/04/DSC_4679-copy.jpg" alt="Animal 2">
+            <img src="images/Gallery1.jpg" alt="Animal 1">
+            <img src="images/Gallery2.jpg" alt="Animal 2">
+            <img src="images/Gallery3.jpg" alt="Animal 3">
+            <img src="images/Gallery4.jpg" alt="Animal 4">
+            <img src="images/Gallery5.png" alt="Animal 5">
+            <img src="images/Gallery6.png" alt="Animal 6">
+            
         </div>
     </section>
     <!-- Donation Section -->
@@ -184,7 +291,7 @@ session_start();
     <input type="text" name="name" placeholder="Name" required><br><br>
     <input type="text" name="mobile" placeholder="Contact Number" required><br><br>
     <textarea name="message" placeholder="Message" required></textarea><br><br>
-    <input type="file" name="image" accept="image/*"><br><br>
+    <input type="file" name="image" accept="image/*">Share screenshot of donation or injured Animals<br><br>
     <button type="submit">Submit</button>
 </form>
 
